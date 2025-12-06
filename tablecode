@@ -237,7 +237,7 @@
 
 % NIVEL -5.0cm (subidos 0.5cm): Grupos 3-12
 \foreach \grupo in {3,4,...,12} {
-    \node[font=\footnotesize\bfseries, anchor=south, yshift=-5.3cm] 
+    \node[font=\footnotesize\bfseries, anchor=south, yshift=-4.9cm] 
         at ([xshift=(\grupo-0.5)*\ancho cm] G) {\grupo};
 }
 
@@ -267,26 +267,26 @@
     at ([xshift=16.5*\ancho cm, yshift=-7*\alto cm] G) {VIIA};
 
 % ROMANOS NIVEL -5.0cm: IIIB-IIB
-\node[font=\footnotesize\bfseries, anchor=north, yshift=-5.0cm] 
+\node[font=\footnotesize\bfseries, anchor=north, yshift=7.65cm] 
     at ([xshift=2.5*\ancho cm, yshift=-7*\alto cm] G) {IIIB};
-\node[font=\footnotesize\bfseries, anchor=north, yshift=-5.0cm] 
+\node[font=\footnotesize\bfseries, anchor=north, yshift=7.65cm] 
     at ([xshift=3.5*\ancho cm, yshift=-7*\alto cm] G) {IVB};
-\node[font=\footnotesize\bfseries, anchor=north, yshift=-5.0cm] 
+\node[font=\footnotesize\bfseries, anchor=north, yshift=7.65cm] 
     at ([xshift=4.5*\ancho cm, yshift=-7*\alto cm] G) {VB};
-\node[font=\footnotesize\bfseries, anchor=north, yshift=-5.0cm] 
+\node[font=\footnotesize\bfseries, anchor=north, yshift=7.65cm] 
     at ([xshift=5.5*\ancho cm, yshift=-7*\alto cm] G) {VIB};
-\node[font=\footnotesize\bfseries, anchor=north, yshift=-5.0cm] 
+\node[font=\footnotesize\bfseries, anchor=north, yshift=7.65cm] 
     at ([xshift=6.5*\ancho cm, yshift=-7*\alto cm] G) {VIIB};
-\node[font=\footnotesize\bfseries, anchor=north, yshift=-5.0cm] 
-    at ([xshift=7.5*\ancho cm, yshift=-7*\alto cm] G) {VIIIB};
-\node[font=\footnotesize\bfseries, anchor=north, yshift=-5.0cm] 
-    at ([xshift=8.5*\ancho cm, yshift=-7*\alto cm] G) {VIIIB};
-\node[font=\footnotesize\bfseries, anchor=north, yshift=-5.0cm] 
-    at ([xshift=9.5*\ancho cm, yshift=-7*\alto cm] G) {VIIIB};
-\node[font=\footnotesize\bfseries, anchor=north, yshift=-5.0cm] 
-    at ([xshift=10.5*\ancho cm, yshift=-7*\alto cm] G) {IB};
-\node[font=\footnotesize\bfseries, anchor=north, yshift=-5.0cm] 
-    at ([xshift=11.5*\ancho cm, yshift=-7*\alto cm] G) {IIB};
+\node[font=\footnotesize\bfseries, anchor=north, yshift=7.65cm] 
+    at ([xshift=7.5*\ancho cm, yshift=-7*\alto cm] G) {IXB};
+\node[font=\footnotesize\bfseries, anchor=north, yshift=7.65cm] 
+    at ([xshift=8.5*\ancho cm, yshift=-7*\alto cm] G) {XB};
+\node[font=\footnotesize\bfseries, anchor=north, yshift=7.65cm] 
+    at ([xshift=9.5*\ancho cm, yshift=-7*\alto cm] G) {XIB};
+\node[font=\footnotesize\bfseries, anchor=north, yshift=7.65cm] 
+    at ([xshift=10.5*\ancho cm, yshift=-7*\alto cm] G) {XIIB};
+\node[font=\footnotesize\bfseries, anchor=north, yshift=7.65cm] 
+    at ([xshift=11.5*\ancho cm, yshift=-7*\alto cm] G) {XIIIB};
 
 
 % ============================================
