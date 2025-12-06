@@ -1,0 +1,318 @@
+\documentclass[landscape, a4paper, 10pt]{article}
+\usepackage[margin=0.2cm]{geometry}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{graphicx}
+
+
+\begin{document}
+\thispagestyle{empty}
+
+\begin{tikzpicture}[remember picture, overlay]
+
+% ============================================
+% 1. CONFIGURACIÓN Y COLORES
+% ============================================
+% Medidas
+\def\ancho{1.60}   % Ancho celda (cm) - ligeramente reducido
+\def\alto{1.8}     % Alto celda (cm) - ligeramente reducido
+
+% Puntos de referencia
+\coordinate (O) at (current page.north west);
+\coordinate (G) at ([xshift=0.5cm, yshift=-1cm] O);
+
+% Colores mejorados
+\definecolor{metal-alk}{RGB}{255,179,186}      % Metales alcalinos
+\definecolor{metal-alkt}{RGB}{255,223,186}     % Alcalinotérreos
+\definecolor{metaloides}{RGB}{186,255,201}     % Metaloides
+\definecolor{no-metales}{RGB}{179,229,252}     % No metales
+\definecolor{halogenos}{RGB}{255,255,186}      % Halógenos
+\definecolor{gases-nob}{RGB}{212,186,255}      % Gases nobles
+\definecolor{otros-met}{RGB}{221,221,221}      % Otros metales
+\definecolor{transicion}{RGB}{255,204,153}     % Metales de transición
+\definecolor{lantanidos}{RGB}{255,204,229}     % Lantánidos
+\definecolor{actinidos}{RGB}{204,229,255}      % Actínidos
+
+% ============================================
+% 2. COMANDO MEJORADO \celda
+% ============================================
+\newcommand{\celda}[6]{
+  % Posición de la celda
+  \coordinate (pos) at ([xshift=#1*\ancho cm, yshift=-#2*\alto cm] G);
+  
+  % Dibujar celda coloreada con borde
+  \fill[#6] (pos) rectangle ++(\ancho cm, -\alto cm);
+  \draw[black, thin] (pos) rectangle ++(\ancho cm, -\alto cm);
+  
+  % Centro de la celda
+  \coordinate (centro) at ([xshift=0.5*\ancho cm, yshift=-0.5*\alto cm] pos);
+  
+  % Número atómico (arriba izquierda)
+
+\node[anchor=north west, inner sep=0.5pt, font=\normalsize\bfseries] 
+  at ([xshift=0.08cm, yshift=-0.2cm] pos) {#3};  % Más margen
+    
+  % Símbolo (centrado, grande)
+  \node[font=\Large\sffamily\bfseries] at (centro) {#4};
+  
+  % Nombre (abajo centrado) - ¡VERSIÓN CORREGIDA!
+  \node[anchor=center, font=\tiny\bfseries, text=black, yshift=-0.7cm] 
+  at (centro) {#5};
+}
+% ============================================
+% 3. TABLA PERIÓDICA COMPLETA (Hasta 118)
+% ============================================
+
+% PERÍODO 1
+\celda{0}{0}{1}{H}{Hidrógeno}{no-metales}
+\celda{17}{0}{2}{He}{Helio}{gases-nob}
+
+% PERÍODO 2
+\celda{0}{1}{3}{Li}{Litio}{metal-alk}
+\celda{1}{1}{4}{Be}{Berilio}{metal-alkt}
+\celda{12}{1}{5}{B}{Boro}{metaloides}
+\celda{13}{1}{6}{C}{Carbono}{no-metales}
+\celda{14}{1}{7}{N}{Nitrógeno}{no-metales}
+\celda{15}{1}{8}{O}{Oxígeno}{no-metales}
+\celda{16}{1}{9}{F}{Flúor}{halogenos}
+\celda{17}{1}{10}{Ne}{Neón}{gases-nob}
+
+% PERÍODO 3
+\celda{0}{2}{11}{Na}{Sodio}{metal-alk}
+\celda{1}{2}{12}{Mg}{Magnesio}{metal-alkt}
+\celda{12}{2}{13}{Al}{Aluminio}{otros-met}
+\celda{13}{2}{14}{Si}{Silicio}{metaloides}
+\celda{14}{2}{15}{P}{Fósforo}{no-metales}
+\celda{15}{2}{16}{S}{Azufre}{no-metales}
+\celda{16}{2}{17}{Cl}{Cloro}{halogenos}
+\celda{17}{2}{18}{Ar}{Argón}{gases-nob}
+
+% PERÍODO 4
+\celda{0}{3}{19}{K}{Potasio}{metal-alk}
+\celda{1}{3}{20}{Ca}{Calcio}{metal-alkt}
+\celda{2}{3}{21}{Sc}{Escandio}{transicion}
+\celda{3}{3}{22}{Ti}{Titanio}{transicion}
+\celda{4}{3}{23}{V}{Vanadio}{transicion}
+\celda{5}{3}{24}{Cr}{Cromo}{transicion}
+\celda{6}{3}{25}{Mn}{Manganeso}{transicion}
+\celda{7}{3}{26}{Fe}{Hierro}{transicion}
+\celda{8}{3}{27}{Co}{Cobalto}{transicion}
+\celda{9}{3}{28}{Ni}{Níquel}{transicion}
+\celda{10}{3}{29}{Cu}{Cobre}{transicion}
+\celda{11}{3}{30}{Zn}{Zinc}{transicion}
+\celda{12}{3}{31}{Ga}{Galio}{otros-met}
+\celda{13}{3}{32}{Ge}{Germanio}{metaloides}
+\celda{14}{3}{33}{As}{Arsénico}{metaloides}
+\celda{15}{3}{34}{Se}{Selenio}{no-metales}
+\celda{16}{3}{35}{Br}{Bromo}{halogenos}
+\celda{17}{3}{36}{Kr}{Kriptón}{gases-nob}
+
+% PERÍODO 5 (similar al 4 pero con diferentes coordenadas Y)
+\celda{0}{4}{37}{Rb}{Rubidio}{metal-alk}
+\celda{1}{4}{38}{Sr}{Estroncio}{metal-alkt}
+\celda{2}{4}{39}{Y}{Itrio}{transicion}
+\celda{3}{4}{40}{Zr}{Circonio}{transicion}
+\celda{4}{4}{41}{Nb}{Niobio}{transicion}
+\celda{5}{4}{42}{Mo}{Molibdeno}{transicion}
+\celda{6}{4}{43}{Tc}{Tecnecio}{transicion}
+\celda{7}{4}{44}{Ru}{Rutenio}{transicion}
+\celda{8}{4}{45}{Rh}{Rodio}{transicion}
+\celda{9}{4}{46}{Pd}{Paladio}{transicion}
+\celda{10}{4}{47}{Ag}{Plata}{transicion}
+\celda{11}{4}{48}{Cd}{Cadmio}{transicion}
+\celda{12}{4}{49}{In}{Indio}{otros-met}
+\celda{13}{4}{50}{Sn}{Estaño}{otros-met}
+\celda{14}{4}{51}{Sb}{Antimonio}{metaloides}
+\celda{15}{4}{52}{Te}{Telurio}{metaloides}
+\celda{16}{4}{53}{I}{Yodo}{halogenos}
+\celda{17}{4}{54}{Xe}{Xenón}{gases-nob}
+
+% PERÍODO 6 (con hueco para lantánidos)
+\celda{0}{5}{55}{Cs}{Cesio}{metal-alk}
+\celda{1}{5}{56}{Ba}{Bario}{metal-alkt}
+% Hueco para lantánidos
+\celda{2}{5}{}{}{}{white}
+\celda{3}{5}{72}{Hf}{Hafnio}{transicion}
+\celda{4}{5}{73}{Ta}{Tántalo}{transicion}
+\celda{5}{5}{74}{W}{Wolframio}{transicion}
+\celda{6}{5}{75}{Re}{Renio}{transicion}
+\celda{7}{5}{76}{Os}{Osmio}{transicion}
+\celda{8}{5}{77}{Ir}{Iridio}{transicion}
+\celda{9}{5}{78}{Pt}{Platino}{transicion}
+\celda{10}{5}{79}{Au}{Oro}{transicion}
+\celda{11}{5}{80}{Hg}{Mercurio}{transicion}
+\celda{12}{5}{81}{Tl}{Talio}{otros-met}
+\celda{13}{5}{82}{Pb}{Plomo}{otros-met}
+\celda{14}{5}{83}{Bi}{Bismuto}{otros-met}
+\celda{15}{5}{84}{Po}{Polonio}{metaloides}
+\celda{16}{5}{85}{At}{Astato}{halogenos}
+\celda{17}{5}{86}{Rn}{Radón}{gases-nob}
+
+% PERÍODO 7 (con hueco para actínidos)
+\celda{0}{6}{87}{Fr}{Francio}{metal-alk}
+\celda{1}{6}{88}{Ra}{Radio}{metal-alkt}
+% Hueco para actínidos
+\celda{2}{6}{}{}{}{white}
+\celda{3}{6}{104}{Rf}{Rutherfordio}{transicion}
+\celda{4}{6}{105}{Db}{Dubnio}{transicion}
+\celda{5}{6}{106}{Sg}{Seaborgio}{transicion}
+\celda{6}{6}{107}{Bh}{Bohrio}{transicion}
+\celda{7}{6}{108}{Hs}{Hasio}{transicion}
+\celda{8}{6}{109}{Mt}{Meitnerio}{transicion}
+\celda{9}{6}{110}{Ds}{Darmstadtio}{transicion}
+\celda{10}{6}{111}{Rg}{Roentgenio}{transicion}
+\celda{11}{6}{112}{Cn}{Copernicio}{transicion}
+\celda{12}{6}{113}{Nh}{Nihonio}{otros-met}
+\celda{13}{6}{114}{Fl}{Flerovio}{otros-met}
+\celda{14}{6}{115}{Mc}{Moscovio}{otros-met}
+\celda{15}{6}{116}{Lv}{Livermorio}{otros-met}
+\celda{16}{6}{117}{Ts}{Teneso}{halogenos}
+\celda{17}{6}{118}{Og}{Oganesón}{gases-nob}
+
+% ============================================
+% 4. SERIE DE LOS LANTÁNIDOS (fila adicional)
+% ============================================
+\def\filalantanidos{8}  % Fila para lantánidos
+\celda{2}{\filalantanidos}{57}{La}{Lantano}{lantanidos}
+\celda{3}{\filalantanidos}{58}{Ce}{Cerio}{lantanidos}
+\celda{4}{\filalantanidos}{59}{Pr}{Praseodimio}{lantanidos}
+\celda{5}{\filalantanidos}{60}{Nd}{Neodimio}{lantanidos}
+\celda{6}{\filalantanidos}{61}{Pm}{Prometio}{lantanidos}
+\celda{7}{\filalantanidos}{62}{Sm}{Samario}{lantanidos}
+\celda{8}{\filalantanidos}{63}{Eu}{Europio}{lantanidos}
+\celda{9}{\filalantanidos}{64}{Gd}{Gadolinio}{lantanidos}
+\celda{10}{\filalantanidos}{65}{Tb}{Terbio}{lantanidos}
+\celda{11}{\filalantanidos}{66}{Dy}{Disprosio}{lantanidos}
+\celda{12}{\filalantanidos}{67}{Ho}{Holmio}{lantanidos}
+\celda{13}{\filalantanidos}{68}{Er}{Erbio}{lantanidos}
+\celda{14}{\filalantanidos}{69}{Tm}{Tulio}{lantanidos}
+\celda{15}{\filalantanidos}{70}{Yb}{Iterbio}{lantanidos}
+\celda{16}{\filalantanidos}{71}{Lu}{Lutecio}{lantanidos}
+
+% ============================================
+% 5. SERIE DE LOS ACTÍNIDOS (fila adicional)
+% ============================================
+\def\filaactinidos{9}  % Fila para actínidos
+\celda{2}{\filaactinidos}{89}{Ac}{Actinio}{actinidos}
+\celda{3}{\filaactinidos}{90}{Th}{Torio}{actinidos}
+\celda{4}{\filaactinidos}{91}{Pa}{Protactinio}{actinidos}
+\celda{5}{\filaactinidos}{92}{U}{Uranio}{actinidos}
+\celda{6}{\filaactinidos}{93}{Np}{Neptunio}{actinidos}
+\celda{7}{\filaactinidos}{94}{Pu}{Plutonio}{actinidos}
+\celda{8}{\filaactinidos}{95}{Am}{Americio}{actinidos}
+\celda{9}{\filaactinidos}{96}{Cm}{Curio}{actinidos}
+\celda{10}{\filaactinidos}{97}{Bk}{Berkelio}{actinidos}
+\celda{11}{\filaactinidos}{98}{Cf}{Californio}{actinidos}
+\celda{12}{\filaactinidos}{99}{Es}{Einstenio}{actinidos}
+\celda{13}{\filaactinidos}{100}{Fm}{Fermio}{actinidos}
+\celda{14}{\filaactinidos}{101}{Md}{Mendelevio}{actinidos}
+\celda{15}{\filaactinidos}{102}{No}{Nobelio}{actinidos}
+\celda{16}{\filaactinidos}{103}{Lr}{Laurencio}{actinidos}
+
+%NUMERACIÓN DE GRUPOS
+% ============================================
+% 6. NUMERACIÓN DE GRUPOS (Doble sistema - ESCALONADO FINAL)
+% ============================================
+
+% NIVEL -0.25cm (subidos 0.25cm): Grupos 1 y 18
+\node[font=\footnotesize\bfseries, anchor=south, yshift=0.3cm] 
+    at ([xshift=0.5*\ancho cm] G) {1};
+\node[font=\footnotesize\bfseries, anchor=south, yshift=0.3cm] 
+    at ([xshift=17.5*\ancho cm] G) {18};
+
+% NIVEL -1.5cm: Grupos 2 y 13-17 (sin cambios)
+\node[font=\footnotesize\bfseries, anchor=south, yshift=-1.25cm] 
+    at ([xshift=1.5*\ancho cm] G) {2};
+
+\node[font=\footnotesize\bfseries, anchor=south, yshift=-1.25cm] 
+    at ([xshift=12.5*\ancho cm] G) {13};
+\node[font=\footnotesize\bfseries, anchor=south, yshift=-1.25cm] 
+    at ([xshift=13.5*\ancho cm] G) {14};
+\node[font=\footnotesize\bfseries, anchor=south, yshift=-1.25cm] 
+    at ([xshift=14.5*\ancho cm] G) {15};
+\node[font=\footnotesize\bfseries, anchor=south, yshift=-1.25cm] 
+    at ([xshift=15.5*\ancho cm] G) {16};
+\node[font=\footnotesize\bfseries, anchor=south, yshift=-1.25cm] 
+    at ([xshift=16.5*\ancho cm] G) {17};
+
+% NIVEL -5.0cm (subidos 0.5cm): Grupos 3-12
+\foreach \grupo in {3,4,...,12} {
+    \node[font=\footnotesize\bfseries, anchor=south, yshift=-5.3cm] 
+        at ([xshift=(\grupo-0.5)*\ancho cm] G) {\grupo};
+}
+
+% ============================================
+% NUMERACIÓN ROMANA ABAJO (MISMO PATRÓN)
+% ============================================
+
+% ROMANOS NIVEL -0.25cm: IA y VIIIA
+\node[font=\footnotesize\bfseries, anchor=north, yshift=13.05cm] 
+    at ([xshift=0.5*\ancho cm, yshift=-7*\alto cm] G) {IA};
+\node[font=\footnotesize\bfseries, anchor=north, yshift=13.05cm] 
+    at ([xshift=17.5*\ancho cm, yshift=-7*\alto cm] G) {VIIIA};
+
+% ROMANOS NIVEL -1.5cm: IIA y IIIA-VIIA
+\node[font=\footnotesize\bfseries, anchor=north, yshift=11.3cm] 
+    at ([xshift=1.5*\ancho cm, yshift=-7*\alto cm] G) {IIA};
+
+\node[font=\footnotesize\bfseries, anchor=north, yshift=11.3cm] 
+    at ([xshift=12.5*\ancho cm, yshift=-7*\alto cm] G) {IIIA};
+\node[font=\footnotesize\bfseries, anchor=north, yshift=11.3cm] 
+    at ([xshift=13.5*\ancho cm, yshift=-7*\alto cm] G) {IVA};
+\node[font=\footnotesize\bfseries, anchor=north, yshift=11.3cm] 
+    at ([xshift=14.5*\ancho cm, yshift=-7*\alto cm] G) {VA};
+\node[font=\footnotesize\bfseries, anchor=north, yshift=11.3cm] 
+    at ([xshift=15.5*\ancho cm, yshift=-7*\alto cm] G) {VIA};
+\node[font=\footnotesize\bfseries, anchor=north, yshift=11.3cm] 
+    at ([xshift=16.5*\ancho cm, yshift=-7*\alto cm] G) {VIIA};
+
+% ROMANOS NIVEL -5.0cm: IIIB-IIB
+\node[font=\footnotesize\bfseries, anchor=north, yshift=-5.0cm] 
+    at ([xshift=2.5*\ancho cm, yshift=-7*\alto cm] G) {IIIB};
+\node[font=\footnotesize\bfseries, anchor=north, yshift=-5.0cm] 
+    at ([xshift=3.5*\ancho cm, yshift=-7*\alto cm] G) {IVB};
+\node[font=\footnotesize\bfseries, anchor=north, yshift=-5.0cm] 
+    at ([xshift=4.5*\ancho cm, yshift=-7*\alto cm] G) {VB};
+\node[font=\footnotesize\bfseries, anchor=north, yshift=-5.0cm] 
+    at ([xshift=5.5*\ancho cm, yshift=-7*\alto cm] G) {VIB};
+\node[font=\footnotesize\bfseries, anchor=north, yshift=-5.0cm] 
+    at ([xshift=6.5*\ancho cm, yshift=-7*\alto cm] G) {VIIB};
+\node[font=\footnotesize\bfseries, anchor=north, yshift=-5.0cm] 
+    at ([xshift=7.5*\ancho cm, yshift=-7*\alto cm] G) {VIIIB};
+\node[font=\footnotesize\bfseries, anchor=north, yshift=-5.0cm] 
+    at ([xshift=8.5*\ancho cm, yshift=-7*\alto cm] G) {VIIIB};
+\node[font=\footnotesize\bfseries, anchor=north, yshift=-5.0cm] 
+    at ([xshift=9.5*\ancho cm, yshift=-7*\alto cm] G) {VIIIB};
+\node[font=\footnotesize\bfseries, anchor=north, yshift=-5.0cm] 
+    at ([xshift=10.5*\ancho cm, yshift=-7*\alto cm] G) {IB};
+\node[font=\footnotesize\bfseries, anchor=north, yshift=-5.0cm] 
+    at ([xshift=11.5*\ancho cm, yshift=-7*\alto cm] G) {IIB};
+
+
+% ============================================
+% 6. TÍTULO Y LEYENDA MEJORADA
+% ============================================
+% Título
+\node[anchor=north, font=\Huge\bfseries\sffamily, yshift=-0.3cm] 
+  at (current page.north) {TABLA PERIÓDICA DE LOS ELEMENTOS};
+
+% Subtítulo
+\node[anchor=north, font=\large, yshift=-1.3cm] 
+  at (current page.north) {Versión completa - 118 elementos};
+
+% www
+\node[anchor=north, font=\large, yshift=-1.8cm] 
+  at (current page.north) {www.brayket.com.ar};
+  
+
+
+
+
+
+% Pie de página
+\node[anchor=south, font=\small\bfseries] 
+  at (current page.south) {Brayket CURSOS ONLINE};
+
+\end{tikzpicture}
+
+\end{document}
