@@ -5,7 +5,7 @@
 
 A complete periodic table of elements designed specifically for **chemistry education**, created with **LaTeX and TikZ**. Ideal for high school and university teachers who need a precise and customizable pedagogical tool.
 
-![Periodic Table Preview](preview.png)
+![Periodic Table Preview](periodic-table-v1.png)
 
 ## ✨ Key Features
 
